@@ -29,9 +29,9 @@ import java.util.regex.PatternSyntaxException;
 @XmlRootElement (name="button")
 public class SetOfAttributes {
 
-    I18N I18N_ = I18N.getInstance("set_attributes");
+    final I18N i18n = I18N.getInstance("set_attributes");
 
-    FlexibleDateParser dateParser = new FlexibleDateParser();
+    final FlexibleDateParser dateParser = new FlexibleDateParser();
 
     @XmlAttribute
     String icon;
@@ -51,7 +51,7 @@ public class SetOfAttributes {
     @XmlAttribute
     String layer;
 
-    @XmlAttribute (name="dimension", required=false)
+    @XmlAttribute (name="dimension")
     int dimension = -1;
 
     @XmlElement (name="attribute")
@@ -109,7 +109,7 @@ public class SetOfAttributes {
 
                     if (!schema.hasAttribute(name)) {
                         if (isAtomic()) {
-                            throw new Exception(I18N.getMessage("set_attributes",
+                            throw new Exception(i18n.get(
                                     "SetAttributesPlugIn.not-consistent-with-schema",
                                     new Object[]{name, layerName, feature.getID()}));
                         } else {
@@ -142,10 +142,10 @@ public class SetOfAttributes {
                     else if (type == AttributeType.OBJECT) {
                         newFeature.setAttribute(name, value);
                     }
-                    else if (AttributeType.class.getField("BOOLEAN") != null && type == AttributeType.BOOLEAN) {
+                    else if (type == AttributeType.BOOLEAN) {
                         newFeature.setAttribute(name, Boolean.parseBoolean(value));
                     }
-                    else if (AttributeType.class.getField("LONG") != null && type == AttributeType.LONG) {
+                    else if (type == AttributeType.LONG) {
                         newFeature.setAttribute(name, Long.parseLong(value));
                     }
                 }
@@ -206,22 +206,22 @@ public class SetOfAttributes {
                 }
             }
             if (editableLayers == 0 && getLayer() == null) {
-                pluginContext.getWorkbenchFrame().warnUser(I18N_.getText("set_attributes",
+                pluginContext.getWorkbenchFrame().warnUser(i18n.get(
                         "SetAttributesPlugIn.no-feature-found"));
             } else if (editableLayers == 0) {
-                pluginContext.getWorkbenchFrame().warnUser(I18N_.getMessage("set_attributes",
+                pluginContext.getWorkbenchFrame().warnUser(i18n.get(
                         "SetAttributesPlugIn.no-feature-found-in-layer",
                         new Object[]{getLayer()}));
             } else if (editableFeatures == 0 && getLayer() == null) {
-                pluginContext.getWorkbenchFrame().warnUser(I18N_.getText("set_attributes",
+                pluginContext.getWorkbenchFrame().warnUser(i18n.get(
                         "SetAttributesPlugIn.no-feature-found"));
             } else if (editableFeatures == 0) {
-                pluginContext.getWorkbenchFrame().warnUser(I18N_.getMessage("set_attributes",
+                pluginContext.getWorkbenchFrame().warnUser(i18n.get(
                         "SetAttributesPlugIn.no-feature-found-in-layer",
                         new Object[]{getLayer()}));
             } else {
                 UndoableCommand command =
-                        new UndoableCommand(I18N.get(SetAttributesPlugIn.class.getName())) {
+                        new UndoableCommand(I18N.JUMP.get(SetAttributesPlugIn.class.getName())) {
                             public void execute() {
                                 for (Layer lyr : mapTarget.keySet()) {
                                     Map<Feature,Feature> mapTgt = mapTarget.get(lyr);

@@ -8,6 +8,7 @@ import com.vividsolutions.jump.workbench.plugin.PlugInContext;
  * buttons to "fill" a set of consistent attribute values for selected
  * features
  */
+// 2.0.0 [2021-08-21] Upgrade i18n management, align version number to OJ version
 // 1.0.0 [2021-04-12] Refactoring for OpenJUMP 2
 // 0.8.0 [2019-09-15] add combo boxes capabilities
 // 0.7.1 [2015-  -  ]
@@ -19,7 +20,7 @@ public class SetAttributesExtension extends Extension {
     }
 
     public String getVersion() {
-        return "1.0.0 (2021-04-12)";
+        return "2.0.0 (2021-08-21)";
     }
 
     public void configure(PlugInContext context) {

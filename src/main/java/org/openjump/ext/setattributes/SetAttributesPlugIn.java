@@ -1,13 +1,11 @@
 package org.openjump.ext.setattributes;
 
 import com.vividsolutions.jump.I18N;
-import com.vividsolutions.jump.workbench.WorkbenchContext;
 import com.vividsolutions.jump.workbench.plugin.AbstractPlugIn;
 import com.vividsolutions.jump.workbench.plugin.PlugInContext;
 import com.vividsolutions.jump.workbench.ui.GUIUtil;
 import com.vividsolutions.jump.workbench.ui.MenuNames;
 import com.vividsolutions.jump.workbench.ui.MultiInputDialog;
-import com.vividsolutions.jump.workbench.ui.plugin.FeatureInstaller;
 
 import javax.swing.*;
 import javax.xml.bind.JAXBContext;
@@ -21,21 +19,21 @@ import java.util.*;
  */
 public class SetAttributesPlugIn extends AbstractPlugIn {
 
-    I18N I18N_ = I18N.getInstance("set_attributes");
-    Map<String,JDialog> dialogsMap = new HashMap<>();
+    final I18N i18n = I18N.getInstance("set_attributes");
+    final Map<String,JDialog> dialogsMap = new HashMap<>();
 
     public void initialize(PlugInContext context) {
-        WorkbenchContext workbenchContext = context.getWorkbenchContext();
-        FeatureInstaller featureInstaller = new FeatureInstaller(workbenchContext);
-        featureInstaller.addMainMenuPlugin(this, new String[]{MenuNames.PLUGINS});
+        context.getFeatureInstaller().
+            addMainMenuPlugin(this, new String[]{MenuNames.PLUGINS});
     }
 
     public String getName() {
-        return I18N_.getText("set_attributes","SetAttributesPlugIn");
+        return i18n.get("SetAttributesPlugIn");
     }
 
     public ImageIcon getIcon(){
-        return new ImageIcon(this.getClass().getResource("world.png"));
+        return new ImageIcon(Objects.requireNonNull(this.getClass()
+            .getResource("/set_attributes/set_attributes.png")));
     }
 
     public boolean execute(final PlugInContext context) throws Exception {

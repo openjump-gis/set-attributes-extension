@@ -19,10 +19,10 @@ import java.util.List;
 @XmlRootElement
 public class SetAttributesToolbox {
 
-    @XmlAttribute (required=false)
+    @XmlAttribute ()
     String title = "";
 
-    @XmlAttribute (required=false)
+    @XmlAttribute ()
     Integer maxCol = 6;
 
     @XmlAttribute
@@ -31,7 +31,7 @@ public class SetAttributesToolbox {
     @XmlAttribute
     Integer iconHeight = 32;
 
-    @XmlAttribute (required=false)
+    @XmlAttribute ()
     boolean unselect;
 
     @XmlElement (name="combo")

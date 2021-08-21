@@ -9,16 +9,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement (name="Attribute")
 public class SetAttribute {
 
-    public static String IS_NULL = "isNull";
-    public static String IS_NULL_OR_EMPTY = "isNullOrEmpty";
+    public static final String IS_NULL = "isNull";
+    public static final String IS_NULL_OR_EMPTY = "isNullOrEmpty";
 
     @XmlAttribute (name="name", required=true)
     String name;
 
-    @XmlAttribute (name="value", required=false)
+    @XmlAttribute (name="value")
     String value;
 
-    @XmlAttribute (name="prerequisite", required=false)
+    @XmlAttribute (name="prerequisite")
     String prerequisite;
 
 
