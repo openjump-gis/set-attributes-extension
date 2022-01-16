@@ -38,4 +38,15 @@
       </includes>
     </dependencySet>
   </dependencySets>
+    <fileSets>
+    <fileSet>
+      <!-- sextante/ files folder -->
+      <directory>${project.build.outputDirectory}</directory>
+      <outputDirectory>/</outputDirectory>
+      <includes>
+        <include>set_attributes/**</include>
+      </includes>
+      <filtered>false</filtered>
+    </fileSet>
+  </fileSets>
 </assembly>

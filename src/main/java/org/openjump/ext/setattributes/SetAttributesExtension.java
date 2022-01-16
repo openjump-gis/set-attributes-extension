@@ -16,7 +16,7 @@ import com.vividsolutions.jump.workbench.plugin.PlugInContext;
 // 0.7.0 [2015-06-13]
 public class SetAttributesExtension extends Extension {
 
-    public static final I18N I18N = com.vividsolutions.jump.I18N.getInstance("set_attributes");
+    public static final I18N I18N = com.vividsolutions.jump.I18N.getInstance("org.openjump.ext.setattributes");
 
     public String getName() {
         return "Set Attribute Values Extension (Micha\u00EBl Michaud)";

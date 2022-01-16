@@ -79,7 +79,7 @@
       <resource>
         <directory>src/main/resources</directory>
         <includes>
-          <include>set_attributes/language/</include>
+          <include>org/openjump/ext/setattributes/language/</include>
         </includes>
         <filtering>true</filtering>
       </resource>
@@ -135,6 +135,16 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.2.1</version>
+        <configuration>
+          <excludes>
+            <exclude>set_attributes/</exclude>
+          </excludes>
+        </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>

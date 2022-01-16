@@ -35,7 +35,7 @@ public class SetAttributesPlugIn extends AbstractPlugIn {
 
     public ImageIcon getIcon(){
         return new ImageIcon(Objects.requireNonNull(this.getClass()
-            .getResource("/set_attributes/set_attributes.png")));
+            .getResource("set_attributes.png")));
     }
 
     public boolean execute(final PlugInContext context) throws Exception {
@@ -50,6 +50,8 @@ public class SetAttributesPlugIn extends AbstractPlugIn {
           Logger.error("Missing default set-attributes/ folder in extension dir.");
         addFiles("~/.OpenJUMP/set_attributes", fileMap);
         MultiInputDialog dialog = new MultiInputDialog(context.getWorkbenchFrame(), getName(), true);
+        ImageIcon small = GUIUtil.resize((ImageIcon) getIcon(), 12);
+        dialog.setIconImage(small.getImage());
         for (Map.Entry<String,File> entry : fileMap.entrySet()) {
             JDialog dia = dialogsMap.get(entry.getKey());
             JCheckBox jcb = dialog.addCheckBox(entry.getKey(), dia!=null && dia.isValid() && dia.isVisible());
@@ -69,6 +71,7 @@ public class SetAttributesPlugIn extends AbstractPlugIn {
                     JDialog jaDialog = toolbox.createDialog(
                             context.getWorkbenchContext(),
                             entry.getValue().getParentFile());
+                    jaDialog.setIconImage(small.getImage());
                     jaDialog.pack();
                     jaDialog.setResizable(false);
                     jaDialog.setLocationRelativeTo(context.getWorkbenchFrame());
