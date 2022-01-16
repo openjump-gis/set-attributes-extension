@@ -1,6 +1,7 @@
 package org.openjump.ext.setattributes;
 
 import com.vividsolutions.jump.I18N;
+import com.vividsolutions.jump.workbench.Logger;
 import com.vividsolutions.jump.workbench.plugin.AbstractPlugIn;
 import com.vividsolutions.jump.workbench.plugin.PlugInContext;
 import com.vividsolutions.jump.workbench.ui.GUIUtil;
@@ -19,7 +20,8 @@ import java.util.*;
  */
 public class SetAttributesPlugIn extends AbstractPlugIn {
 
-    final I18N i18n = I18N.getInstance("set_attributes");
+    final I18N i18n = SetAttributesExtension.I18N;
+
     final Map<String,JDialog> dialogsMap = new HashMap<>();
 
     public void initialize(PlugInContext context) {
@@ -40,7 +42,12 @@ public class SetAttributesPlugIn extends AbstractPlugIn {
 
         Map<String,File> fileMap = new HashMap<>();
         Map<String,JCheckBox> checkBoxMap = new HashMap<>();
-        addFiles("./lib/ext/set_attributes", fileMap);
+        // find folder in distro _and_ during development
+        File folder = context.getWorkbenchContext().getWorkbench().getPlugInManager().findFileOrFolderInExtensionDirs("set_attributes");
+        if (folder!=null)
+          addFiles(folder.getAbsolutePath(), fileMap);
+        else
+          Logger.error("Missing default set-attributes/ folder in extension dir.");
         addFiles("~/.OpenJUMP/set_attributes", fileMap);
         MultiInputDialog dialog = new MultiInputDialog(context.getWorkbenchFrame(), getName(), true);
         for (Map.Entry<String,File> entry : fileMap.entrySet()) {
