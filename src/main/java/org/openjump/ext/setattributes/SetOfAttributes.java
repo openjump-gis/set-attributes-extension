@@ -29,7 +29,7 @@ import java.util.regex.PatternSyntaxException;
 @XmlRootElement (name="button")
 public class SetOfAttributes {
 
-    final I18N i18n = I18N.getInstance("set_attributes");
+    final I18N i18n = SetAttributesExtension.I18N;
 
     final FlexibleDateParser dateParser = new FlexibleDateParser();
 

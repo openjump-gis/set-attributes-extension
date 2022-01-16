@@ -13,7 +13,7 @@ import java.text.StringCharacterIterator;
  */
 public class SetAttributesButtonMouseListener extends MouseAdapter {
 
-  final I18N i18n = I18N.getInstance("set_attributes");
+  final I18N i18n = SetAttributesExtension.I18N;
   final int defaultDismissTimeout = ToolTipManager.sharedInstance().getDismissDelay();
   final int defaultInitialDelay = ToolTipManager.sharedInstance().getInitialDelay();
 
