@@ -1,5 +1,6 @@
 package org.openjump.ext.setattributes;
 
+import com.vividsolutions.jump.I18N;
 import com.vividsolutions.jump.workbench.plugin.Extension;
 import com.vividsolutions.jump.workbench.plugin.PlugInContext;
 
@@ -15,12 +16,14 @@ import com.vividsolutions.jump.workbench.plugin.PlugInContext;
 // 0.7.0 [2015-06-13]
 public class SetAttributesExtension extends Extension {
 
+    public static final I18N I18N = com.vividsolutions.jump.I18N.getInstance("set_attributes");
+
     public String getName() {
         return "Set Attribute Values Extension (Micha\u00EBl Michaud)";
     }
 
     public String getVersion() {
-        return "2.0.0 (2021-08-21)";
+        return I18N.get("SetAttributesPlugIn.Version");
     }
 
     public void configure(PlugInContext context) {
