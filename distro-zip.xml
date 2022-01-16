@@ -24,7 +24,18 @@
       <useProjectArtifact>false</useProjectArtifact>
       <excludes>
         <exclude>org.openjump:OpenJUMP</exclude>
+        <exclude>*:jaxb-*</exclude>
+        <exclude>*:javax.activation*</exclude>
       </excludes>
+    </dependencySet>
+    <dependencySet>
+      <outputDirectory>/jaxb/</outputDirectory>
+      <useTransitiveFiltering>true</useTransitiveFiltering>
+      <useProjectArtifact>false</useProjectArtifact>
+      <includes>
+        <include>*:jaxb-*</include>
+        <include>*:javax.activation*</include>
+      </includes>
     </dependencySet>
   </dependencySets>
 </assembly>
